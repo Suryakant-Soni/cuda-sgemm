@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
     set(CMAKE_CUDA_ARCHITECTURES 75)
 endif()
 
-# let every targer find headers in the include/
+# let every target find headers in the include/
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # --- executables ---   
@@ -20,15 +20,11 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 add_executable(device_query src/device_query.cu)
 
 # correctness test - kernel vs CPU reference
-add_executable(correctness tests/correctness.cu src/kernels/naive.cu)
+# add_executable(correctness tests/correctness.cu src/kernels/naive.cu)
 
 # benchmark - times the kernel, needs cuBLAS for comparision later
-add_executable(benchmark src/bench/benchmark.cu src/kernes/naive.cu)
+# add_executable(benchmark src/bench/benchmark.cu src/kernels/naive.cu)
 
 # link cuBLAS into the benchmark ( for the cuBLAS comparision milestone)
-find_package(CUDAToolkit REQUIRED)
-target_link_libraries(benchmark PRIVATE CUDA::cublas)
-
-
-
-
+# find_package(CUDAToolkit REQUIRED)
+# target_link_libraries(benchmark PRIVATE CUDA::cublas)
